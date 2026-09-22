@@ -1,61 +1,32 @@
 # FedFinGuard: Trust-Aware Federated Learning for Adversarially Robust Financial Fraud Detection
 
-This repository contains the official implementation of the **FedFinGuard** framework, as proposed in the paper "Trust-Aware Federated Learning with Prototype Contrastive Attention for Adversarially Robust Financial Fraud Detection".
+This repository contains the official implementation of FedFinGuard, a trust-aware federated learning framework designed to integrate prototype contrastive attention, focal loss, and trust-aware aggregation for adversarially robust financial fraud detection.
 
-The framework introduces a privacy-preserving federated learning approach for credit card fraud detection. It integrates a feature tokenizer, bidirectional LSTM, and multi-head attention to capture complex sequential dependencies in transaction data. To address severe class imbalance and prevent minority class forgetting in non-independent and identically distributed (non-IID) settings, the architecture employs focal loss alongside a novel prototype contrastive loss. Furthermore, a trust-aware aggregation (TAA) mechanism dynamically evaluates client updates using norm clipping and cosine similarity, effectively neutralizing Byzantine gradient manipulation attacks.
+**Note on Code Availability:** A portion of the basic source code for FedFinGuard has been uploaded to this repository to provide a foundational overview of the framework. The complete source code, including all training scripts, advanced defense modules, and detailed preprocessing pipelines, will be made publicly available upon the official acceptance of our manuscript. For the duration of the peer-review process, the full codebase has been provided to the journal editors and reviewers as part of the submission package to ensure transparency and reproducibility.
 
-The model was trained and evaluated on two widely used financial datasets: the **European Credit Card Fraud** dataset and the **Taiwan Credit Card Default** dataset.
+## Dataset Information
+FedFinGuard was evaluated on two publicly available financial datasets. We do not host the raw data in this repository due to size and licensing constraints, but the official sources are listed below. Preprocessing and stratified splitting scripts will be included in the final release.
 
----
+1. **European Credit Card Fraud**: Official Kaggle Repository (https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
+2. **Taiwan Credit Card Default**: Official UCI Machine Learning Repository (https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients)
 
-## Datasets
+## Reproduction and Setup
+Upon public release, this repository will include:
 
-If you wish to use the original datasets, please refer to the official sources below:
+* A `requirements.txt` file for dependency management.
+* Step-by-step scripts for data preprocessing, non-IID client partitioning, and federated model training.
+* Configuration files matching the hyperparameters reported in the manuscript.
 
-1. **European Credit Card Fraud** (Kaggle / ULB):  
-   https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+## Citation
+If you find this work or the provided code useful for your research, please cite our paper:
 
-2. **Taiwan Credit Card Default** (UCI Machine Learning Repository):  
-   https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients
-
----
-
-## Framework Architecture
-
-The FedFinGuard architecture consists of four primary components:
-
-1. **Feature Tokenizer**: Projects raw input features into multiple semantic groups to capture distinct aspects of transaction data.
-2. **Bidirectional LSTM**: Captures sequential patterns and temporal dependencies among the tokenized features.
-3. **Multi-Head Attention**: Models complex interactions between different feature representations.
-4. **Trust-Aware Aggregation (TAA)**: A server-side defense mechanism that applies norm clipping, consensus scoring, and asymmetric reputation tracking to filter out malicious or anomalous client updates during federated averaging.
-
-> **Note:** Please ensure the framework diagram image path in your repository is updated to reflect the FedFinGuard architecture.
-
----
-
-## Requirements
-
-To run the experiments, ensure your environment meets the following dependencies:
-
-- Python 3.8 or higher
-- PyTorch 1.8.0 or higher
-- NumPy
-- Pandas
-- Scikit-learn
-- Matplotlib
-- TQDM
-- XGBoost (required for reproducing centralized baseline comparisons)
-
----
-
-## Quick Start
-
-### Installation
-
-Clone the repository and install the required dependencies:
-
-```bash
-git clone https://github.com/Musaed98/FedFinGuard.git
-cd FedFinGuard
-pip install -r requirements.txt
+```bibtex
+@article{fedfinguard2026,
+  title={Trust-Aware Federated Learning with Prototype Contrastive Attention for Adversarially Robust Financial Fraud Detection},
+  author={Author Names},
+  journal={Journal Name},
+  year={2026},
+  note={Submitted for publication},
+  publisher={Publisher}
+}
 ```
